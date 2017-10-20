@@ -1,0 +1,14 @@
+<div class="row centered">
+  <div class="box">
+    <div class="box-header">
+      <img src="/assets/logo.png"/>
+      <h1>Wallet</h1>
+    </div>
+    <p>Enter your mnenomic</p>
+    <input type="text" [(ngModel)]="password"/>
+    <div class="button-wrap">
+      <p routerLink="/keys">Or create a wallet...</p>
+      <button (click)="login()">Login</button>
+    </div>
+  </div>
+</div>

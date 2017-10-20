@@ -1,0 +1,18 @@
+<header class="easing" [ngClass]="{ 'menuActive': menuActive == true }">
+  <div class="left-side">
+    <img src="/assets/logo.png" routerLink="/"/>
+    <h1>Wallet</h1>
+  </div>
+  <div class="right-side menu" (click)="toggleMenu()">
+    <i class="fa fa-bars"></i>
+  </div>
+</header>
+<div class="easing hidden-menu" [ngClass]="{ 'menuActive': menuActive == true }">
+  <div class="menu-header">
+    <img src="/assets/logo.png" routerLink="/"/>
+  </div>
+  <a routerLink="/"><i class="fa fa-home"></i> Home</a>
+  <a routerLink="/currencies"><i class="fa fa-bitcoin"></i> Currencies</a>
+  <a routerLink="/settings"><i class="fa fa-key"></i> Settings</a>
+</div>
+<router-outlet></router-outlet>

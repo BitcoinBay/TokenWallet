@@ -1,0 +1,99 @@
+<div class="row">
+
+  <div class="columns">
+    <div class="small-column">
+      <h2>Balance</h2>
+      <div class="balance">
+        <h3>0.00</h3>
+        <div class="img-container">
+          <div>
+            <img src="/assets/eth.png"/>
+          </div>
+        </div>
+      </div>
+      <div class="balance ucash">
+        <h3>0.00</h3>
+        <div class="img-container">
+          <div>
+            <img src="/assets/logo.png"/>
+          </div>
+        </div>
+      </div>
+      <h2>Token Balances</h2>
+      <div class="balance">
+        <h3>0.00 DYNO</h3>
+      </div>
+      <div class="address">
+        <h2>My address</h2>
+        <h3>0xb794f5ea0ba39494ce839613fffba74279579268</h3>
+      </div>
+    </div>
+    <div class="big-column">
+
+      <div class="toggle">
+        <a
+          class="easing"
+          [ngClass]="{ 'active': page == 'send' }"
+          (click)="page = 'send'"
+        >Send </a>
+        <a
+          class="easing"
+          [ngClass]="{ 'active': page == 'tx' }"
+          (click)="page = 'tx'"
+        >Transactions </a>
+      </div>
+
+      <div class="content form" [ngClass]="{ 'visible': page == 'send' }">
+        <h2>Send to Address</h2>
+        <input type="text"/>
+        <h2>Amount</h2>
+        <div class="double-input">
+          <input type="number"/>
+          <p>in</p>
+          <select>
+            <option value="">ETH</option>
+            <option value="">CAD</option>
+            <option value="">USD</option>
+          </select>
+        </div>
+        <div class="button-wrap">
+          <a class="button">Send</a>
+        </div>
+      </div>
+
+      <div class="content" [ngClass]="{ 'visible': page == 'tx' }">
+        <div class="columns">
+          <div class="small-column">
+            <h2>Addresses</h2>
+            <div class="addresses">
+              <p>Chris Cates (0xb794)</p>
+              <p>Chris Cates (0xb794)</p>
+              <p>Chris Cates (0xb794)</p>
+              <p>Chris Cates (0xb794)</p>
+              <p>Chris Cates (0xb794)</p>
+            </div>
+          </div>
+          <div class="big-column">
+            <h2>Recent Transactions</h2>
+            <div class="tx">
+              <h3>To: 0xb794f5ea0ba39494ce839613fffba74279579268</h3>
+              <h3 class="value">Value: 10 ETH</h3>
+            </div>
+            <div class="tx">
+              <h3>From: 0xb794f5ea0ba39494ce839613fffba74279579268</h3>
+              <h3 class="value">Value: 10 ETH</h3>
+            </div>
+            <div class="tx">
+              <h3>To: 0xb794f5ea0ba39494ce839613fffba74279579268</h3>
+              <h3 class="value">Value: 10 ETH</h3>
+            </div>
+            <div class="tx">
+              <h3>From: 0xb794f5ea0ba39494ce839613fffba74279579268</h3>
+              <h3 class="value">Value: 10 ETH</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

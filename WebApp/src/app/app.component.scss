@@ -1,0 +1,95 @@
+@import "./theme.scss";
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 75px;
+  background: white;
+  box-shadow: 2.5px 2.5px 5px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &.menuActive {
+    transform: translateX(-250px);
+  }
+
+  div.left-side {
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    img {
+      height: 45px;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+  div.right-side {
+    width: 100%;
+    height: 100%;
+    max-width: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    i {
+      font-size: 24px;
+    }
+  }
+}
+
+div.hidden-menu {
+  position: fixed;
+  left: 100vw;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: $black2;
+  color: white;
+  div.menu-header {
+    height: 75px;
+    background: white;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 45px;
+    }
+  }
+  div.conditional-items {
+    display: none;
+    &.visible {
+      display: block;
+    }
+  }
+  a {
+    display: block;
+    color: $gold;
+    padding: 5px 15px;
+    text-decoration: none;
+    cursor: pointer;
+    i {
+      width: 30px;
+    }
+  }
+  div.line {
+    margin: 15px;
+    border-bottom: 2px solid white;
+  }
+  &.menuActive {
+    transform: translateX(-250px);
+  }
+}
