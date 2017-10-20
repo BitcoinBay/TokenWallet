@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from '../wallet.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  public walletStore: any = {};
+  public seedPhrase: string = "";
+
+  constructor(private wallet: WalletService, private router: Router) {
+
+  }
 
   ngOnInit() {
+
+  }
+
+  login() {
+    this.wallet.loginWallet(this.seedPhrase, (err, value) => {
+      if (err) {
+        console.log("Error", err);
+      } else {
+        this.walletStore = value.walletStore;
+        console.log(this.walletStore);
+        this.router.navigate(['/wallet']);
+      }
+    });
   }
 
 }
