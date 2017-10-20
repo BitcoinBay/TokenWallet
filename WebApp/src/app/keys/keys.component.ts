@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
+import { WalletService } from '../wallet.service';
 
 @Component({
   selector: 'app-keys',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KeysComponent implements OnInit {
 
-  constructor() { }
+  public seed: string = "";
+  public walletStore: Object = "";
+
+  constructor(private wallet: WalletService, private ref: ApplicationRef) {
+
+  }
 
   ngOnInit() {
+    this.wallet.generateWallet((err, value) => {
+      if (err) {
+        console.log("Error", err);
+      } else {
+        this.seed = value.seed;
+        this.walletStore = value.wallet;
+      }
+    });
   }
 
   login() {
