@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-
+  public mnemonic: string = "";
   public walletStore: any = {};
   public seedPhrase: string = "";
 
@@ -22,7 +22,8 @@ export class IndexComponent implements OnInit {
   }
 
   login() {
-    this.wallet.loginWallet(this.seedPhrase, (err, value) => {
+
+    this.wallet.loginWallet(this.mnemonic, (err, value) => {
       if (err) {
         console.log("Error", err);
       } else {

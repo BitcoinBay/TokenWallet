@@ -19,21 +19,42 @@ export class WalletService {
   }
 
   loginWallet(seed, callback) {
+    console.log("seed", seed);
     console.log(lightwallet);
-    lightwallet.keystore.deriveKeyFromPassword(
-      seed,
-      (err, value) => {
-        console.log(err, value);
-        this.seed = seed;
-        this.walletStore = value;
-        this.address = lightwallet.keystore._computeAddressFromPrivKey(value, "curve25519");
-        callback(err, {
-          'seed': seed,
-          'wallet': value,
-          'address': this.address
-        })
-      }
-    );
+    // lightwallet.keystore.deriveKeyFromPassword(
+    //   seed,
+    //   (err, value) => {
+    //     console.log(err, value);
+    //     this.seed = seed;
+    //     this.walletStore = value;
+    //     this.address = lightwallet.keystore._computeAddressFromPrivKey(value, "curve25519");
+    //     callback(err, {
+    //       'seed': seed,
+    //       'wallet': value,
+    //       'address': this.address
+    //     })
+    //   }
+    // );
+    var keystore = lightwallet.keystore;
+    debugger;
+    var password = 'mypass'
+    keystore.createVault({
+      password: password,
+      seedPhrase: seed,
+      hdPathString: "m/44'/60'/0'/0",
+    }, (error, ks) => {
+      ks.keyFromPassword(password, (e, pwDerivedKey) => {
+        if(e) throw e;
+        ks.generateNewAddress(pwDerivedKey, 1);
+        var addr = ks.getAddresses()[0];
+        this.address = addr;
+        callback(e, {
+          seed: seed,
+          wallet: ks,
+          address: this.address
+        });
+      })
+    })
   }
 
   generateWallet(callback) {
